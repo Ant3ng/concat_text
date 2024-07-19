@@ -19,13 +19,13 @@ if __name__ == "__main__":
         print("Usage: python main.py <directory_path>")
     else:
         directory_path = sys.argv[1]
-        output_filename = sys.argv[2]
+        output_filename = os.path.basename(directory_path)
         result = concat_text_files(directory_path)
-        
+
         os.makedirs("outputs", exist_ok=True)
         output_path = f"outputs/{output_filename}.txt"
         # Save concatenated content to a file with the specified filename
         with open(output_path, 'w', encoding='utf-8') as output_file:
             output_file.write(result)
-        
+
         print("Concatenated content saved to", output_path)
